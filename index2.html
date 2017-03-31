@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
@@ -6,49 +6,21 @@
   </head>
   <body>
 
-    <div id="header">
-      <p>Press any key to get started!</p>
-      <p>Current Word</p>
-    </div>
-
-    <div id="underscore_display">
+    <div id="game">
+      <p>Press r, p or s to start playing!</p>
     </div>
 
     <script type="text/javascript">
 
       var computerChoices = ["r", "p", "s"];
       var wins = 0;
-      var attempts: 12;
-
-
-// Player one available words
-var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
-
-// Random word generator
-function playerOneWord () {
-     var rand = words[Math.floor(Math.random() * words.length)];
-    return rand;
-}
-
-// display on the page underscores, according to playerOneWord
-function underScore ( answerWord ) {
-        var result = ""; // This is the variable we want to use
-        // Write a loop here to concatanate a '_' to result for
-    // every letter in answerWord.
-    for (var i=0; i<answerWord.length;i++){
-        result = result.concat("_");
-    }
-    return result;
-}
-
-
-//underScore("george"); yields ______
+      var losses = 0;
+      var ties = 0;
 
       document.onkeyup = function(event) {
 
-        var playerTwoGuess = event.key;
-        var playerOneGuess = playerOneWord ();
-        var playerOneGuessDisplay = underScore(playerOneGuess);
+        var userGuess = event.key;
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
         // Reworked our code from last step to use "else if" instead of lots of if statements.
         if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
@@ -74,19 +46,85 @@ function underScore ( answerWord ) {
           else if (userGuess === computerGuess) {
             ties++;
           }
-var html = "<p>Current Wins</p>" +
-          + wins
-"<p>Number of attempts remaining:</p>" +
-          + attempts + "<p>Letters Already Guessed: </p>" + playerTwoGuess
+
+          var html = "<p>Press r, p or s to start playing!</p>" +
+          "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
           "<p>ties: " + ties + "</p>";
 
           document.querySelector("#game").innerHTML = html;
-          
         }
       };
 
     </script>
 
   </body>
-</html>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+  </head>
+
+
+
+  <body onload="randToLines()">
+
+    <div id="hangman">
+      <p>Press any key to get started!</p>
+      <p id="wins"></p>
+      <p>Current Word</p>
+      <p id="displayLines"></p>
+      <br>
+      <br>
+      <p id="guessesLeft"></p>
+      <input id="letter" type="text">
+      <input type="button" value="letter" onClick="UserInput()"/>
+    </div>
+  </body>
+
+
+    
+    
+
+    <script type="text/javascript">
+
+      var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
+      var randomWord = words[Math.floor(Math.random() * words.length)];
+      
+
+      var lines = [];
+      var linesFormatted;
+      var guesses= 12;
+
+    function randToLines(){
+      for (var 1=0; i<randomWord.length; i++){
+          lines[i] = "_";
+
+      }
+
+      linesFormatted = lines.join(" ");
+      document.getElementById("displayLines").innerHTML = linesFormatted;
+    }
+
+    function UserInput(){
+
+      var input = document.getElementById("letter").value;
+
+      if (input.length>0){
+        for (var i = 0; i<randomWord.length;i++){
+          if (randomWord[i] === input){
+             lines[i] = input;
+          }
+          else
+            guesses--;
+        }
+      }
+
+    }
+    </script>
+
+    </body>
+</html> -->
