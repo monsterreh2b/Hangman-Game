@@ -1,45 +1,49 @@
+var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
+var wins = 0;
+var wordGuess = words[Math.floor(Math.random() * words.length)];
+var blanks = [];
+var userGuessTotal= 12;
+var guessed = [];
 
-      var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
-      var wins = 0;
-     
-        
-    var wordGuess = words[Math.floor(Math.random() * words.length)];
-    var blanks = [];
+
 
 function wordBlank(guess){
-        
-        
-        
-
-        
-          for (var i=0; i<guess.length; i++){
-              blanks[i] = "_";
-
-          }
-
-       
-
-
-
-      document.querySelector("#display").innerHTML = blanks.join(" ");
+for (var i=0; i<guess.length; i++){
+    blanks[i] = "_";
+}
+document.querySelector("#display").innerHTML = blanks.join(" ");
 }
 
 
 function loop(guess, userKey){
 
+var match=0;
 
-var userGuessTotal= 12;
-// while((count!=guess.length){
-       for (var i = 0; i<guess.length;i++){
-           if (guess[i] === userKey){
-              blanks[i] = userKey;
-            
-             
-          }
-           
-       }
-  console.log(blanks);
+for (var i = 0; i<guess.length;i++){
+    if (guess[i] === userKey){
+        blanks[i] = userKey;
+        match+=1;
+       
+      }
+       
+    }
+
+
+
+guessed.push(userKey);
+console.log(blanks);
 document.querySelector("#display").innerHTML = blanks.join(" ");
+document.querySelector("#remaining").innerHTML = --userGuessTotal;
+if (guessed.length<=12){
+document.querySelector("#guessed").innerHTML = guessed.join("  ");
+
+}else{
+  alert("You lost! Choose another word");
+  location.reload();
+}
+
+
+
 }
 
 
@@ -48,16 +52,15 @@ wordBlank(wordGuess);
 
 
 document.onkeyup = function(event){
-   var userChoice = event.key;
-
-
-// if (userChoice === 'd'){
-// //  reWriteStats();
+var userChoice = event.key;
+   
 
 loop(wordGuess,userChoice);
 
+
+
 }
-// 
+
 
 
 
@@ -96,4 +99,3 @@ loop(wordGuess,userChoice);
 
 
     //   }
-    // }
