@@ -53,6 +53,7 @@ document.querySelector("#guessed").innerHTML = guessed.join("  ");
 }else{
   alert("You lost! Choose another word");
   location.reload();
+
 }
 
 
@@ -64,12 +65,16 @@ function winCheck(guess, array2){
   if (array2.length===guess.length){
 
 document.querySelector("#wins").innerHTML = ++winCount;
-alert("You Win!");
+alert("You Win! (if this popup follows the you lost alert then you actually lost...sorry)");
+setTimeout(refresh, 2000);
 
 
 }
 }
 
+function refresh (){ 
+     location.reload();
+  } 
 
 
 wordBlank(wordGuess);
