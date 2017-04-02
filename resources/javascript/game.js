@@ -51,7 +51,7 @@ if (guessed.length<=12){
 document.querySelector("#guessed").innerHTML = guessed.join("  ");
 
 }else{
-  alert("You lost! Choose another word");
+  alert("You lost! Try another word");
   location.reload();
 
 }
