@@ -26,8 +26,7 @@ var match=0;
 for (var i = 0; i<guess.length;i++){
     if (guess[i] === userKey){
         blanks[i] = userKey;
-        // wins.push(userkey);
-
+        wins.push(userKey);
      
       }
        
@@ -47,10 +46,7 @@ console.log(blanks);
 
 document.querySelector("#display").innerHTML = blanks.join(" ");
 document.querySelector("#remaining").innerHTML = --userGuessTotal;
-//   if ((guessed.length<=12) && (wins.Length===wordGuess.length)){
-//     alert("You Win!");
-//     document.querySelector("#wins").innerHTML = winCount++;
-// }else 
+
 if (guessed.length<=12){
 document.querySelector("#guessed").innerHTML = guessed.join("  ");
 
@@ -58,32 +54,23 @@ document.querySelector("#guessed").innerHTML = guessed.join("  ");
   alert("You lost! Choose another word");
   location.reload();
 }
-// if ((blanks.length===guess.length) && (guess.length<=12)){
-// document.querySelector("#wins").innerHTML = ++wins;
-// }
+
 
 
 }
 
 function winCheck(guess, array2){
 
-  if ( JSON.stringify(guess) === JSON.stringify(array2)){
-// for (var i=0;i< guess.length; i++) {
-//     for (var j=0;j< array2.length; j++) {
-//         if (array1[i] === array2[j]) {
-//             counter=counter+1;
+  if (array2.length===guess.length){
 
-//         }
-//     }
-// }
-// if (counter===array2.length){
-//   alert("You Win!");
-// document.querySelector("#wins").innerHTML = winCount++;
-// }
+document.querySelector("#wins").innerHTML = ++winCount;
 alert("You Win!");
-document.querySelector("#wins").innerHTML = winCount++;
+
+
 }
 }
+
+
 
 wordBlank(wordGuess);
 
@@ -94,6 +81,7 @@ var userChoice = event.key;
    
 
 loop(wordGuess,userChoice);
-winCheck(wordGuess,blanks);
+winCheck(wordGuess,wins);
+
 
 }
