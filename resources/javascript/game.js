@@ -65,7 +65,7 @@ function winCheck(guess, array2){
   if (array2.length===guess.length){
 
 document.querySelector("#wins").innerHTML = ++winCount;
-alert("You Win! (if this popup follows the you lost alert then you actually lost...sorry)");
+alert("You Win! (if you saw the you lost alert right before this then you actually lost...sorry)");
 setTimeout(refresh, 2000);
 
 
