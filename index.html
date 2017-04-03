@@ -3,18 +3,28 @@
   <head>
     <meta charset="UTF-8">
     <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./resources/css/style.css"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
   <body>
-
+  <div class="wrapper">
     <div id="game">
-      <p>Press any key to get started!</p>
+
+      <div class="black">
+        <p>Press any key to get started!</p>
+        <br>
+        <p>Current Word</p>
+      </div>
       <br>
-      <p>Current Word</p>
+      <div class="red">
+        <p id="display"></p>
+      </div>
       <br>
-      <p id="display"></p>
-      <br>
-      <p>Wins:</p>
-      <p id="wins">0</p>
+      <div class="black">
+        <p>Wins:</p>
+        <p id="wins">0</p>
+      </div>
       <br>
       <p>Guesses remaining:</p>
       <p id="remaining">12</p>
@@ -22,7 +32,7 @@
       <p>Letters Already Guessed:</p>
       <p id="guessed"></p>
     </div>
-
+  </div>
 
     <div id="stats">
 

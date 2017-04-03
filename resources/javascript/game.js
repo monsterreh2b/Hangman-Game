@@ -24,9 +24,9 @@ function loop(guess, userKey){
 var match=0;
 
 for (var i = 0; i<guess.length;i++){
-    if (guess[i] === userKey){
+    if (guess[i] === userKey){  
         blanks[i] = userKey;
-        wins.push(userKey);
+        wins.push(userKey); //somehow needs to recognize uniqueness
      
       }
        
@@ -65,7 +65,7 @@ function winCheck(guess, array2){
   if (array2.length===guess.length){
 
 document.querySelector("#wins").innerHTML = ++winCount;
-alert("You Win! (if you saw the you lost alert right before this then you actually lost...sorry)");
+alert("You Win! (if you saw the you lost alert right before this, or have not used unique letters, then you actually lost...sorry)");
 setTimeout(refresh, 2000);
 
 
@@ -76,7 +76,7 @@ function refresh (){
      location.reload();
   } 
 
-
+alert("This is Hangman. Rules: 1) You have 12 attempts 2) Unique letters only (please reference the Letters Already Guessed section while you play)")
 wordBlank(wordGuess);
 
 
